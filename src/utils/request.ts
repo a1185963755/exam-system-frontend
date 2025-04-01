@@ -3,7 +3,7 @@ import { message } from "antd";
 
 // 创建axios实例
 const request: AxiosInstance = axios.create({
-  baseURL: "/api", // API的base_url
+  baseURL: "/api",
   timeout: 15000, // 请求超时时间
   headers: {
     "Content-Type": "application/json",

@@ -8,7 +8,7 @@ const App = () => {
 
   useEffect(() => {
     const isAuthenticated = localStorage.getItem("token");
-    const publicPaths = ["/login", "/register"];
+    const publicPaths = ["/login", "/register", "/reset-password"];
 
     if (!isAuthenticated && !publicPaths.includes(location.pathname)) {
       navigate("/login");

@@ -18,7 +18,7 @@ const Login = () => {
       const response = await login(values);
       localStorage.setItem("token", response.token);
       messageApi.success("登录成功");
-      // navigate("/");
+      navigate("/");
     } catch (error: any) {
       messageApi.error(error.data.message);
     } finally {
@@ -47,7 +47,10 @@ const Login = () => {
               </Button>
             </Form.Item>
 
-            <div className="flex justify-end">
+            <div className="flex justify-between">
+              <Button type="link" onClick={() => navigate("/reset-password")}>
+                忘记密码
+              </Button>
               <Button type="link" onClick={() => navigate("/register")}>
                 注册账号
               </Button>
