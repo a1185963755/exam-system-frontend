@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Card, Space, Button, Radio, Checkbox, message, Modal } from "antd";
 import { useParams, useNavigate } from "react-router-dom";
 import { findExam } from "@/api/exam";
+import { addAnswer } from "@/api/answer";
 
 interface QuestionOption {
   content: string;
@@ -66,13 +67,15 @@ const ExamPaper = () => {
       ...prev,
       [questionId]: value,
     }));
-    // TODO: 实现答案自动保存
   };
 
-  const handleSubmit = () => {
-    // TODO: 实现试卷提交和成绩计算
-    messageApi.success("试卷提交成功");
-    navigate("/");
+  const handleSubmit = async () => {
+    if (!id) return;
+    const data = await addAnswer(id, answers);
+    messageApi.success("试卷提交成功,你的分数是" + data?.score);
+    setTimeout(() => {
+      navigate("/");
+    }, 2000);
   };
 
   const formatTime = (seconds: number) => {

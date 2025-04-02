@@ -21,6 +21,13 @@ export default defineConfig({
           return path.replace(/^\/api\/exam/, "");
         },
       },
+      "/api/answer": {
+        target: "http://localhost:3003",
+        changeOrigin: true,
+        rewrite: (path) => {
+          return path.replace(/^\/api\/answer/, "");
+        },
+      },
     },
   },
   resolve: {
